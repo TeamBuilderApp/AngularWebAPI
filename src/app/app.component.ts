@@ -8,15 +8,16 @@ import { ApiService } from './api.service';
   styleUrl: './app.component.css'
 })
 export class AppComponent implements OnInit {
-  data: any;
+  usersDataArray: any;
 
   title = "AngularWebAPI";
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
     // Fetch data on initialization. Get's the entire list of User(s).
-    this.apiService.get().subscribe(response => {
-      this.data = response;
+    this.apiService.getUsers().subscribe(response => {
+      //this.data = response;
+      this.usersDataArray = response;
       console.log('GET User(s) on init: ', response);
     });
   }
