@@ -3,6 +3,10 @@
 <style>
  </style>
  <body>
+  <p *ngIf="usersDataArray">
+    <div *ngFor="let user of usersDataArray">
+         <span>id: {{ user.id }} name: {{ user.name }}</span>
+   </div>
 </body>
 </main>
 <router-outlet />
