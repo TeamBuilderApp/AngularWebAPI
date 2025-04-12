@@ -11,23 +11,24 @@ export class ApiService {
   constructor(private http: HttpClient) {}
 
   // GET request. Retreives the full list of Users.
-  getData(): Observable<any> {
+  get(): Observable<any> {
     return this.http.get<any>(this.apiUrl);
   }
 
   //Get request. Get a specific User by id:
-  getDataById(id: number): Observable<any> {
-    return this.http.get<any>('${this.apiUrl}/${id}');
+  getUser(id: number): Observable<any> {
+    return this.http.get<any>(this.apiUrl + '/' + id);
   }
 
   // POST request. Creates a new User. Saves to MongoDB.
-  postData(data: any): Observable<any> {
+  create(data: any): Observable<any> {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // Optional: Set headers
-    return this.http.post<any>(this.apiUrl, data, { headers });
+    return this.http.post<any>(this.apiUrl + '/create', data, { headers });
   }
 
   // PUT request. Updates a specific User by id:
-  putData(id: number, post: any): Observable<any> {
-    return this.http.put<any>(`${this.apiUrl}/posts/${id}`, post);
+  update(id: number, data: any): Observable<any> {
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // Optional: Set headers
+    return this.http.put<any>(this.apiUrl + '/' + id, data);
   }
 }

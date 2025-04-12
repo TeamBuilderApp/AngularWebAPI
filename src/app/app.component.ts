@@ -10,26 +10,35 @@ import { ApiService } from './api.service';
 export class AppComponent implements OnInit {
   data: any;
 
+  title = "AngularWebAPI";
   constructor(private apiService: ApiService) {}
 
   ngOnInit() {
-    // Fetch data on initialization
-    this.apiService.getData().subscribe(response => {
+    // Fetch data on initialization. Get's the entire list of User(s).
+    this.apiService.get().subscribe(response => {
       this.data = response;
+      console.log('GET User(s) on init: ', response);
     });
   }
+
+      // Method to update data
+      getUser(id: number) {
+        this.apiService.getUser(id).subscribe(response => {
+          console.log('GET User by ID: ', response);
+        });
+      }
 
   // Method to post data
-  submitData(newData: any) {
-    this.apiService.postData(newData).subscribe(response => {
-      console.log('Data submitted:', response);
+  create(newData: any) {
+    this.apiService.create(newData).subscribe(response => {
+      console.log('POST Create a new User:', response);
     });
   }
 
-    // Method to post data
-    updateData(newData: any) {
-      this.apiService.putData(newData).subscribe(response => {
-        console.log('Data updated:', response);
+    // Method to update data
+    update(id: number, newData: any) {
+      this.apiService.update(id, newData).subscribe(response => {
+        console.log('PUT Update an existing User, if found:', response);
       });
     }
 }
