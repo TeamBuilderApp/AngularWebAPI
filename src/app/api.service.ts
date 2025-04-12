@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   providedIn: 'root',
 })
 export class ApiService {
-  private apiUrl = 'https://localhost:7271/api/Users';
+  private apiUrl = 'http://localhost:7271/User';
   users = [
     {id: 1, name: 'User1'},
     {id: 2, name: 'User2'},
