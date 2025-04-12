@@ -6,22 +6,18 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ApiService {
   private apiUrl = 'http://localhost:7271/User';
-  users = [
-    {id: 1, name: 'User1'},
-    {id: 2, name: 'User2'},
-    {id: 3, name: 'User3'}
-  ]
+  userFoundById = []
 
   constructor(private http: HttpClient) {}
 
   // GET request. Retreives the full list of Users.
   getUsers() {
-    return this.http.get(this.apiUrl + '/AllUsers');
+    return this.http.get(this.apiUrl + '/Get');
   }
 
   //Get request. Get a specific User by id:
   getUser(id: number) {
-    return this.http.get(this.apiUrl + '/' + id);
+    return this.http.get(this.apiUrl + '/Get/' + id);
   }
 
   // POST request. Creates a new User. Saves to MongoDB.
@@ -33,6 +29,6 @@ export class ApiService {
   // PUT request. Updates a specific User by id:
   update(id: number, data: any) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // Optional: Set headers
-    return this.http.put(this.apiUrl + '/update/' + id, data, { headers });
+    return this.http.put(this.apiUrl + '/Update?id=' + id, data, { headers });
   }
 }

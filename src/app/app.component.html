@@ -3,10 +3,22 @@
 <style>
  </style>
  <body>
+  <p>All Users:</p>
   <p *ngIf="usersDataArray">
     <div *ngFor="let user of usersDataArray">
          <span>id: {{ user.id }} name: {{ user.name }}</span>
    </div>
+   <br />
+   <p>Create User: <button id="createBtn" style="width: 150px; height: 40px;" type="button" (click)="onButtonClick()">Create User, then refresh the page!</button>
+    <br />
+    <br />
+    <br />
+  
+   <p>Update User: <br> Auto entered User ID 1, from the list above, then refresh the page!<br /> <button id="updateBtn" style="width: 150px; height: 40px;" type="button" (click)="onUpdateButtonClick(1)">Update User, then refresh the page!</button></p>
+   <br /><br />
+   <br /> Search by ID. Did a find User by ID, on User ID: 1. Below are what we found using HTTP GET :id: <br>
+   <p *ngIf="userData">
+    <span>id: {{ userData.id }} name: {{ userData.name }}</span>
 </body>
 </main>
 <router-outlet />
