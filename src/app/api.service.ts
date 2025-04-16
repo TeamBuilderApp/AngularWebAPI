@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class ApiService {
   private apiUrl = 'http://localhost:7271/User';
-  userFoundById = []
+  userFoundById = [];
 
   constructor(private http: HttpClient) {}
 
@@ -29,6 +29,8 @@ export class ApiService {
   // PUT request. Updates a specific User by id:
   update(data: any) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // Optional: Set headers
-    return this.http.put(this.apiUrl + '/Update?id=' + data.id, data, { headers });
+    return this.http.put(this.apiUrl + '/Update?id=' + data.id, data, {
+      headers,
+    });
   }
 }

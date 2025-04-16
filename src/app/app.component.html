@@ -1,30 +1,75 @@
-
 <main>
-<style>
- </style>
- <body>
-  <p>All Users:</p>
-  <p *ngIf="usersDataArray">
+  <style></style>
+  <body>
+    <p>All Users:</p>
+    <p *ngIf="usersDataArray"></p>
     <div *ngFor="let user of usersDataArray">
-         <span>id: {{ user.id }} name: {{ user.name }}</span>
-   </div>
-   <br />
-   <p>Create User: <button id="createBtn" style="width: 150px; height: 40px;" type="button" (click)="onButtonClick()">Create User, then refresh the page!</button>
+      <span>id: {{ user.id }} name: {{ user.name }}</span>
+    </div>
     <br />
+    <p>
+      Create User: <br />
+      Enter a User ID to Create a new User:
+      <input
+        id="createUserByIdTextBox"
+        style="width: 150px; height: 40px"
+        type="text"
+        value=""
+      />
+      Enter the User's Name also, to Create a new User:
+      <input
+        id="createUserByIdNameTextBox"
+        style="width: 150px; height: 40px"
+        type="text"
+        value=""
+      />
+      <br />
+      <button
+        id="createBtn"
+        style="width: 150px; height: 40px"
+        type="button"
+        (click)="onCreateButtonClick()"
+      >
+        Create User, then refresh the page!
+      </button>
+      <br />
+      <br />
+      <br />
+    </p>
+
+    <p>
+      Update User: <br />
+      Enter a User ID to Update:
+      <input
+        id="updateUserByIdTextBox"
+        style="width: 150px; height: 40px"
+        type="text"
+        value=""
+      />
+      Enter the User's Name also, to Update:
+      <input
+        id="updateUserByIdNameTextBox"
+        style="width: 150px; height: 40px"
+        type="text"
+        value=""
+      />
+      <br />
+      <button
+        id="updateBtn"
+        (click)="onUpdateButtonClick()"
+        formtarget="_blank"
+        style="width: 150px; height: 40px"
+      >
+        Update User, then refresh the page!
+      </button>
+    </p>
+    <br /><br />
     <br />
-    <br />
-  
-   <p>Update User: 
-    <br> Enter a User ID to Update:
-    <input id="updateUserByIdTextBox" style="width: 150px; height: 40px;" type="text" value=""  />
-    Enter the User's Name also, to Update:
-    <input id="updateUserByIdNameTextBox" style="width: 150px; height: 40px;" type="text" value=""  />
-    <br /> 
-    <button id="updateBtn" (click)="onUpdateButtonClick()" formtarget="_blank" style="width: 150px; height: 40px;">Update User, then refresh the page!</button></p>
-   <br /><br />
-   <br /> Search by ID. Did a find User by ID, on User ID: 1. Below are what we found using HTTP GET :id: <br>
-   <p *ngIf="userData">
-    <span>id: {{ userData.id }} name: {{ userData.name }}</span>
-</body>
+    Search by ID. Did a find User by ID, on User ID: 1. Below are what we found
+    using HTTP GET :id: <br />
+    <p *ngIf="userData">
+      <span>id: {{ userData.id }} name: {{ userData.name }}</span>
+    </p>
+  </body>
 </main>
 <router-outlet />
