@@ -36,10 +36,16 @@ export class AppComponent implements OnInit {
     // Add your logic here
   }
 
-  onUpdateButtonClick(id: any) {
+  onUpdateButtonClick() {
     var newUser: any;
-    newUser = {id: id, name: 'You updated a User using PUT!'};
-    this.update(id, newUser);
+    var userId = ((document.getElementById("updateUserByIdTextBox") as HTMLInputElement).value);
+    console.log(Number(userId));
+
+    var userName = ((document.getElementById("updateUserByIdNameTextBox") as HTMLInputElement).value);
+    console.log(userName);
+
+    newUser = {id: Number(userId), name: userName};
+    this.update(newUser);
   }
 
   onFindButtonClick(id: any) {
@@ -63,9 +69,9 @@ export class AppComponent implements OnInit {
   }
 
     // Method to update data
-    update(id: number, newData: any) {
-      this.apiService.update(id, newData).subscribe(response => {
-        console.log('PUT Update an existing User, if found:', response);
+    update(newData: any) {
+      this.apiService.update(newData).subscribe(response => {
+        console.log('PUT Update an existing User, if found by ID: ' + newData.id + '. New name: ' + newData.name);
       });
     }
 }

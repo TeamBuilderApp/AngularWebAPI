@@ -27,8 +27,8 @@ export class ApiService {
   }
 
   // PUT request. Updates a specific User by id:
-  update(id: number, data: any) {
+  update(data: any) {
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' }); // Optional: Set headers
-    return this.http.put(this.apiUrl + '/Update?id=' + id, data, { headers });
+    return this.http.put(this.apiUrl + '/Update?id=' + data.id, data, { headers });
   }
 }

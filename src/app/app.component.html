@@ -14,7 +14,13 @@
     <br />
     <br />
   
-   <p>Update User: <br> Auto entered User ID 1, from the list above, then refresh the page!<br /> <button id="updateBtn" style="width: 150px; height: 40px;" type="button" (click)="onUpdateButtonClick(1)">Update User, then refresh the page!</button></p>
+   <p>Update User: 
+    <br> Enter a User ID to Update:
+    <input id="updateUserByIdTextBox" style="width: 150px; height: 40px;" type="text" value=""  />
+    Enter the User's Name also, to Update:
+    <input id="updateUserByIdNameTextBox" style="width: 150px; height: 40px;" type="text" value=""  />
+    <br /> 
+    <button id="updateBtn" (click)="onUpdateButtonClick()" formtarget="_blank" style="width: 150px; height: 40px;">Update User, then refresh the page!</button></p>
    <br /><br />
    <br /> Search by ID. Did a find User by ID, on User ID: 1. Below are what we found using HTTP GET :id: <br>
    <p *ngIf="userData">
