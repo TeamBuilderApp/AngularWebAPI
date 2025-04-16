@@ -65,11 +65,23 @@
     </p>
     <br /><br />
     <br />
-    Search by ID. Did a find User by ID, on User ID: 1. Below are what we found
-    using HTTP GET :id: <br />
-    <p *ngIf="userData">
-      <span>id: {{ userData.id }} name: {{ userData.name }}</span>
-    </p>
+    Find User.
+    <p id="foundUserResults"></p>
+    Enter an existing User ID to Search:
+    <input
+      id="findUserByIdTextBox"
+      style="width: 150px; height: 40px"
+      type="text"
+      value=""
+    />
+    <button
+      id="findBtn"
+      (click)="onFindButtonClick()"
+      formtarget="_blank"
+      style="width: 150px; height: 40px"
+    >
+      Find User by ID Button.
+    </button>
   </body>
 </main>
 <router-outlet />

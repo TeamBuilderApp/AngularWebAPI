@@ -9,7 +9,6 @@ import { ApiService } from './api.service';
 })
 export class AppComponent implements OnInit {
   usersDataArray: any;
-  userData: any;
 
   title = 'AngularWebAPI';
   constructor(private apiService: ApiService) {}
@@ -20,12 +19,6 @@ export class AppComponent implements OnInit {
       //this.data = response;
       this.usersDataArray = response;
       console.log('GET User(s) on init: ', response);
-    });
-
-    this.apiService.getUser(1).subscribe((response) => {
-      //this.data = response;
-      this.userData = response;
-      console.log('GET User by ID: 1 on init: ', response);
     });
   }
 
@@ -61,15 +54,20 @@ export class AppComponent implements OnInit {
     this.update(newUser);
   }
 
-  onFindButtonClick(id: any) {
-    this.usersDataArray = this.getUser(id);
-    // Add your logic here
+  onFindButtonClick() {
+    var userId = (
+      document.getElementById('findUserByIdTextBox') as HTMLInputElement
+    ).value;
+    this.getUser(Number(userId));
   }
 
   //Method to GET a User by :id.
   getUser(id: number) {
     this.apiService.getUser(id).subscribe((response) => {
       console.log('GET User by ID: ', response);
+      (
+        document.getElementById('foundUserResults') as HTMLParagraphElement
+      ).innerText = 'Success! Found a User: ' + JSON.stringify(response);
       return response;
     });
   }
